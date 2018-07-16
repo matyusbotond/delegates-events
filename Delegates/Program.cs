@@ -64,6 +64,8 @@ namespace Delegates
             RaiseFoundNumber += p1.HandleFoundNumber;
             RaiseFoundNumber += p2.HandleFoundNumber;
 
+            //RaiseFoundNumber += p2.HandleFoundNumber;
+
             //FakeAlgorithm f = new FakeAlgorithm();
 
             //f.RemoveAllSubscriber();
@@ -72,6 +74,9 @@ namespace Delegates
             {
                 2, 4, 5, 3, 6,
             };
+
+            //Memory leak problem
+            //p1 = new Person("Aladár");
 
             //RunAlgorithm(nums, new FilterDelegate(IsOdd));
 
