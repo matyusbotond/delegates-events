@@ -10,6 +10,21 @@ namespace Delegates
 
     delegate void FoundNumber(int num);
 
+    class FakeAlgorithm
+    {
+        public void RemoveAllSubscriber()
+        {
+            //Program.RaiseFoundNumber(3);
+            //Program.RaiseFoundNumber = HandleMagicNumber;
+            Program.RaiseFoundNumber += HandleMagicNumber;
+        }
+
+        private void HandleMagicNumber(int num)
+        {
+            Console.WriteLine("Találtam egy számot");
+        }
+    }
+
     class Person
     {
         public int Age { get; set; }
@@ -29,10 +44,11 @@ namespace Delegates
 
     class Program
     {
-        static event FoundNumber RaiseFoundNumber;
+        public static event FoundNumber RaiseFoundNumber;
 
         static void Main(string[] args)
         {
+
             Person p1 = new Person("Béla");
             Person p2 = new Person("Géza");
 
@@ -48,6 +64,10 @@ namespace Delegates
             //RaiseFoundNumber += new FoundNumber(p1.HandleFoundNumber);
             RaiseFoundNumber += p1.HandleFoundNumber;
             RaiseFoundNumber += p2.HandleFoundNumber;
+
+            FakeAlgorithm f = new FakeAlgorithm();
+
+            f.RemoveAllSubscriber();
 
             int[] nums = new int[]
             {
