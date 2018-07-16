@@ -48,7 +48,6 @@ namespace Delegates
 
         static void Main(string[] args)
         {
-
             Person p1 = new Person("Béla");
             Person p2 = new Person("Géza");
 
@@ -65,9 +64,9 @@ namespace Delegates
             RaiseFoundNumber += p1.HandleFoundNumber;
             RaiseFoundNumber += p2.HandleFoundNumber;
 
-            FakeAlgorithm f = new FakeAlgorithm();
+            //FakeAlgorithm f = new FakeAlgorithm();
 
-            f.RemoveAllSubscriber();
+            //f.RemoveAllSubscriber();
 
             int[] nums = new int[]
             {
@@ -78,6 +77,12 @@ namespace Delegates
 
             RunAlgorithm(nums, IsOdd);
 
+            RaiseFoundNumber -= p1.HandleFoundNumber;
+         
+            Console.ReadKey();
+
+            RunAlgorithm(nums, IsEven);
+         
             Console.ReadKey();
         }
 
